@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import LeftSideBanner from "./LeftSideBanner";
 
 export default function LeftSideNav() {
   const [categories, setCategories] = useState([]);
@@ -25,6 +26,7 @@ export default function LeftSideNav() {
           {category.name}
         </NavLink>
       ))}
+      <LeftSideBanner />
     </div>
   );
 }
