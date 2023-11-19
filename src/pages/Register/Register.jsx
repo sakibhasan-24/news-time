@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../Common/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../contexts/AuthContext";
 
 export default function Register() {
+  const { user, createUser } = useContext(AuthProvider);
   const handleRegistration = (e) => {
     e.preventDefault();
     const newForm = new FormData(e.currentTarget);
@@ -10,7 +12,12 @@ export default function Register() {
     const password = newForm.get("password");
     const name = newForm.get("name");
     const photoUrl = newForm.get("photoUrl");
-    console.log(email, password, name, photoUrl);
+    createUser(email, password)
+      .then((data) => {
+        const newUser = data.user;
+        console.log(newUser);
+      })
+      .catch((e) => console.log(e.message));
   };
   return (
     <div>
@@ -59,7 +66,7 @@ export default function Register() {
         </form>
         <p className="text-center font-bold my-6 ">
           Have any account?{" "}
-          <Link to="/register">
+          <Link to="/login">
             <span className="text-blue-700 font-extrabold">Login</span>
           </Link>
         </p>
