@@ -15,9 +15,11 @@ export default function Navbar() {
           src={defaultImage}
           alt="user-image"
         />
-        <button className=" rounded-md bg-blue-600 font-bold px-8 py-2">
-          Login
-        </button>
+        <Link to="/login">
+          <button className=" rounded-md bg-blue-600 font-bold px-8 py-2">
+            Login
+          </button>
+        </Link>
       </div>
     </nav>
   );
